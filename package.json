@@ -1,0 +1,20 @@
+{
+  "name": "lesson01",
+  "version": "1.0.0",
+  "description": "lesson 1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node lesson01.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lesson",
+    "node",
+    "js"
+  ],
+  "author": "Andrey",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
