@@ -12,9 +12,11 @@
     "node",
     "js"
   ],
-  "author": "Andrey",
+  "author": "Kensya",
   "license": "ISC",
   "dependencies": {
-    "colors": "^1.4.0"
+    "colors": "^1.4.0",
+    "event-stream": "^4.0.1",
+    "events": "^3.3.0"
   }
 }
