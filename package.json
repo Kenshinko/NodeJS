@@ -4,8 +4,11 @@
   "description": "lesson 1",
   "main": "index.js",
   "scripts": {
-    "dev": "node lesson01.js",
+    "start": "node lesson4.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "reader": "lesson04.js"
   },
   "keywords": [
     "lesson",
@@ -17,6 +20,9 @@
   "dependencies": {
     "colors": "^1.4.0",
     "event-stream": "^4.0.1",
-    "events": "^3.3.0"
+    "events": "^3.3.0",
+    "inquirer": "^8.2.4",
+    "readline": "^1.3.0",
+    "yargs": "^17.5.1"
   }
 }
