@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Socket</title>
+    <script
+      src="https://cdn.socket.io/4.2.0/socket.io.min.js"
+      integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <input id="input" type="text" autofocus />
+    <button id="button">Send</button>
+    <div id="messages"></div>
+    <div id="usercounter"></div>
+    <script>
+      const socket = io("localhost:5500");
+      const messageBlock = document.querySelector("#messages");
+      const button = document.querySelector("#button");
+      const input = document.querySelector("#input");
+      const userСounter = document.querySelector("#usercounter");
+
+      button.addEventListener("click", () => {
+        const data = {
+          user: socket.id.substr(0, 5),
+          message: input.value,
+        };
+
+        socket.emit("newMessage", data);
+      });
+
+      socket.on("connect", () => {
+        socket.emit("newMessage", {user: "Некий бот", message: `Пользователь ${socket.id.substr(0, 5)} зашел в чат.`});
+      });
+
+      socket.on("newMessage", (data) => {
+        input.value = "";
+        messageBlock.insertAdjacentHTML(
+          "beforeend",
+          `<div>
+            <div>${data.user}</div>
+            <div>${data.message}</div>
+          </div>`
+        );
+      });
+
+      socket.emit('getCounter', (error, counter) => {
+        userСounter.insertAdjacentHTML(
+          "beforeend",
+          `<p>Пользователей на странице: ${counter}</p>`
+        );
+      });
+    </script>
+  </body>
+</html>
